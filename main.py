@@ -8,6 +8,7 @@ app = FastAPI()
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://mehdimoii-reactapp.vercel.app"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -66,7 +67,7 @@ async def load(request: Request):
         payload = jwt.decode(request.cookies.get("jwt_token"), SECRET, algorithms=["HS256"])
     except:
         raise HTTPException(status_code=400, detail="error")
-    ##groups get from username
+    #groups get from username
     groups = {
         "clients": [
             {
@@ -250,7 +251,6 @@ async def redirect(request: Request, redirectId: str):
                 raise HTTPException(status_code=400, detail="invalid type")
 
         return {"message": data}
-
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
