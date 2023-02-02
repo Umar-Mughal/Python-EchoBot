@@ -8,6 +8,7 @@ fastapi = "*"
 uvicorn = "*"
 requests = "*"
 jwt = "*"
+pyjwt = "*"
 
 [dev-packages]
 
